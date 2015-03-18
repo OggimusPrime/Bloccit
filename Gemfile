@@ -56,5 +56,8 @@ group :development, :test do
   gem 'pry-rails'
 end
 
+#Devise user authentication 
+gem 'devise'
+
 
 

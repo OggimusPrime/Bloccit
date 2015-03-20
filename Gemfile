@@ -56,8 +56,11 @@ group :development, :test do
   gem 'pry-rails'
 end
 
-#Devise user authentication 
+# Devise user authentication 
 gem 'devise'
+
+# Pundit - Users roles authorization 
+gem 'pundit'
 
 
 

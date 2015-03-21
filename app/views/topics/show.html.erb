@@ -13,6 +13,9 @@
           <h4 class="media-heading">
             <%= link_to post.title, [@topic, post] %>
           </h4>
+          <p>
+            <%= post.body[0..100] %>
+          </p>
           <small>
             submitted <%= time_ago_in_words(post.created_at) %> ago by <%= post.user.name %><br/>
             <%= post.comments.count %> Comments

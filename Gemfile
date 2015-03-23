@@ -59,5 +59,7 @@ gem 'pundit'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
+# Redcarpet - The safe Markdown parser, reloaded.
+gem 'redcarpet'
 
 

@@ -62,4 +62,13 @@ gem 'pundit'
 # Redcarpet - The safe Markdown parser, reloaded.
 gem 'redcarpet'
 
+# This gem provides a simple and extremely flexible way to upload files from Ruby applications.
+gem 'carrierwave'
+
+# A ruby wrapper for ImageMagick or GraphicsMagick command line.
+gem 'mini_magick'
+
+# fog is the Ruby cloud services library, top to bottom:
+gem 'fog'
+
 

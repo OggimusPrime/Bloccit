@@ -7,6 +7,8 @@ class CommentsController < ApplicationController
     @comment = current_user.comments.new(comment_params)
     @comment.post = @post
     @new_comment = Comment.new
+
+    authorize @comment
   
 
     if @comment.save

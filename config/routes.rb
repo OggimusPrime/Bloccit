@@ -11,7 +11,7 @@ Rails.application.routes.draw do
     resources :posts, except: [:index] 
   end
 
-  resources :posts, only: [:index] do
+  resources :posts, only: [] do
       resources :comments, only: [:create, :destroy]
   end
 

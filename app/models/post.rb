@@ -4,6 +4,18 @@ class Post < ActiveRecord::Base
   belongs_to :user
   belongs_to :topic
 
+  def up_votes
+    votes.where(value: 1).count
+  end
+
+  def down_votes
+    votes.where(value: -1).count
+  end
+
+  def points
+    votes.sum(:value)
+  end
+
   default_scope {order('created_at DESC')}
 
   validates :title, length: { minimum: 5 }, presence: true

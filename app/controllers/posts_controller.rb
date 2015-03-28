@@ -1,10 +1,8 @@
 class PostsController < ApplicationController
-
   def show
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
-    @comments = @post.comments#.paginate(page: params[:page], per_page: 10)
-    #@comment = Comment.new
+    @comments = @post.comments.paginate(page: params[:page], per_page: 10)
   end
 
   def new
@@ -38,7 +36,7 @@ class PostsController < ApplicationController
     @topic = Topic.find(params[:topic_id])
     @post = Post.find(params[:id])
     authorize @post
-    
+
     if @post.update_attributes(post_params)
       flash[:notice] = "Post was updated."
       redirect_to [@topic, @post]
@@ -63,7 +61,7 @@ class PostsController < ApplicationController
     end
   end
 
-  private 
+  private
 
   def post_params
     params.require(:post).permit(:title, :body)

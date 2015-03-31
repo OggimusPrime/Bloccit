@@ -3,7 +3,7 @@ require 'rails_helper'
 describe FavoritesController do 
 
   include TestFactories
-  include Devise::TestHelper
+  include Devise::TestHelpers
 
   before do
     @post = associated_post
@@ -26,7 +26,7 @@ describe FavoritesController do
       favorite = @user.favorites.where(post: @post).create
       expect( @user.favorites.find_by_post_id(@post.id) ).not_to be_nil
 
-      delete :destroy, { post_id: @post.id, id: favortie.id }
+      delete :destroy, { post_id: @post.id, id: favorite.id }
 
       expect( @user.favorites.find_by_post_id(@post.id) ).to be_nil
     end

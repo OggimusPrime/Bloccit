@@ -8,11 +8,11 @@ describe User do
     before do
       @post = associated_post
       @user = authenticated_user
-      @another_post = another_associated_post
+      @another_post = associated_post
     end
 
     it "returns `nil` if the user has favorited another post" do
-      user.favorites.create!(post: @another_post)
+      @user.favorites.create!(post: @another_post)
       expect( @user.favorites.find_by_post_id(@post.id) ).to be nil 
     end
 

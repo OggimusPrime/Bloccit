@@ -28,8 +28,13 @@
 .vote-arrows {
   width: 40px;
   text-align: center;
+  margin-top: 10px;
 }
 
 .favorite {
   margin-top: 20px;
+}
+
+.voted {
+  opacity: 0.5;
 }

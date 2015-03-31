@@ -7,8 +7,8 @@ describe Topic do
   describe "scopes" do
 
     before do
-      @public_topic = Topic.create #default is public
-      @private_topic = Topic.create(public: false)
+      @public_topic = Topic.create(name: "I'm public") #default is public
+      @private_topic = Topic.create(name: "This is private", public: false)
     end
 
     describe "publicly_viewable" do
@@ -26,7 +26,7 @@ describe Topic do
     describe "visible_to(user)" do
       it "returns all topics if the user is present" do
         user = true # sneaky solution; we don't need a real user, just something truthy
-        expect(Topic.visible_to(user)).to eq( [Topic.all] )
+        expect(Topic.visible_to(user)).to eq( Topic.all )
       end
 
       it "returns only public topics if user is nil" do

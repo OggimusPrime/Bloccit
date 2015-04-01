@@ -1,22 +1,22 @@
-<div class="row">
-  <div class="col-md-12">
-    <div class="media">
-      <% if @user.avatar? %>
-      <%= image_tag @user.avatar.url, class: 'pull-left' %>
-      <% end %>
-      <div class="media-body">
-        <h2 class="media-heading"><%= @user.name %>
-          <small>
-            <%= pluralize(@user.posts.count, 'post') %>,
-            <%= pluralize(@user.comments.count, 'comment') %>
-          </small>
+<div class="container">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="media">
+        <% if @user.avatar? %>
+        <%= image_tag @user.avatar.url, class: 'pull-left' %>
+        <% end %>
+        <div class="media-body">
+          <h2 class="media-heading"><%= @user.name %>
+            <small>
+              <%= pluralize(@user.posts.count, 'post') %>,
+              <%= pluralize(@user.comments.count, 'comment') %>
+            </small>
+          </h2>
         </div>
       </div>
     </div>
   </div>
-</div>
-</br>
-<div class="container">
+  <br/>
   <div class="row">
     <div class="tabbable tabs-left">
       <ul class="nav nav-tabs">

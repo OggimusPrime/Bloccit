@@ -17,7 +17,7 @@
 </div>
 <div class="row">
   <div class="col-md-8">
-    <% if policy(@post).edit? %>
+    <% if policy(@comments).create? %>
   
       <%= render 'comments/form' %>
 

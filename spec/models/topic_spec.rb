@@ -2,8 +2,6 @@ require 'rails_helper'
 
 describe Topic do
 
-  include TestFactories
-
   describe "scopes" do
 
     before do

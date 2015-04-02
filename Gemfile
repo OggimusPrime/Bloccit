@@ -29,10 +29,10 @@ group :development, :test do
   gem 'pry-rails'
 
   gem 'rspec-rails', '~> 3.0'
-end
 
-group :test do
   gem 'capybara'
+
+  gem 'factory_girl_rails', '~>4.0'
 end
 
 # Use SCSS for stylesheets

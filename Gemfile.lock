@@ -211,6 +211,8 @@ GEM
       slop (~> 3.4)
     pry-rails (0.3.3)
       pry (>= 0.9.10)
+    puma (2.11.1)
+      rack (>= 1.1, < 2.0)
     pundit (0.3.0)
       activesupport (>= 3.0.0)
     rack (1.6.0)
@@ -331,6 +333,7 @@ DEPENDENCIES
   newrelic_rpm
   pg
   pry-rails
+  puma
   pundit
   rails (= 4.2.0)
   rails_12factor

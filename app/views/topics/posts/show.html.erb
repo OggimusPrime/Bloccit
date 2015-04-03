@@ -28,14 +28,12 @@
 </div>
 <div class="row">
   <div class="col-md-8">
-    <% if policy(@comments).create? %>
-
+    <div class='new-comment'>
       <%= render 'comments/form' %>
-      
-    <% end %>
-  </div>
-  <div class="col-md-8">
+    </div>
     <h2>Comments</h2>
-    <%= render partial: 'comments/comment', collection: @comments %>
+    <div class='js-comments'>
+      <%= render partial: 'comments/comment', collection: @comments %>
+    </div>
   </div>
 </div>

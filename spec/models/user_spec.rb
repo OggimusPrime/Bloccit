@@ -29,9 +29,9 @@ describe User do
   describe ".top-rated" do
 
     before do
-      @user1 = FactoryGirl.build(:user_with_post_and_comment)
+      @user1 = FactoryGirl.create(:user_with_post_and_comment, comment_count: 2)
 
-      @user2 = FactoryGirl.build(:user_with_post_and_comment)
+      @user2 = FactoryGirl.create(:user_with_post_and_comment)
     end
 
     it "returns users ordered by comments + posts" do

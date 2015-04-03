@@ -8,12 +8,17 @@ FactoryGirl.define do
 
     factory :user_with_post_and_comment do
       transient do
-        comment = :comment
+        comment_count 1
       end
 
-      after(:build) do |user, evaluator|
+      after(:create) do |user, evaluator|
         post = create(:post, user: user)
-        comment = create(:comment, comment, user: user, post: post)
+        create_list(:comment, evaluator.comment_count, post: post, user: user)
+        #comment = create(:comment, user: user, post: post)
+        # evaluator.comment_count.times do
+        #   comment = create(:comment, user: user, post: post)
+
+        # end
       end
     end
   end

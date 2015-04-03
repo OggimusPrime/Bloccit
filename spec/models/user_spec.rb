@@ -29,17 +29,13 @@ describe User do
   describe ".top-rated" do
 
     before do
-      @user1 = create(:user)
-      post = create(:post, user: @user1)
-      create(:comment, user: @user1, post: post)
+      @user1 = FactoryGirl.create(:user_with_post_and_comment, comment_count: 2)
 
-      @user2 = create(:user)
-      post = create(:post, user: @user2)
-      2.times { create(:comment, user: @user2, post:post) }
+      @user2 = FactoryGirl.create(:user_with_post_and_comment)
     end
 
     it "returns users ordered by comments + posts" do
-      expect( User.top_rated ).to eq([@user2, @user1])
+      expect( User.top_rated ).to eq([@user1, @user2])
     end
 
     it "stores a `posts_count` on user" do

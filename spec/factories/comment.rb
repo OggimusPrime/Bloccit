@@ -1,6 +1,6 @@
 FactoryGirl.define do
   factory :comment do
-    body "This is a new comment."
+    body 'This is a new comment.'
     user
     post
 

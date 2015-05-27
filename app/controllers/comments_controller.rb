@@ -1,21 +1,36 @@
 class CommentsController < ApplicationController
-
   respond_to :html
 
   def create
     @post = Post.find(params[:post_id])
-    @comments = @post.comments
-
-    @comment = current_user.comments.build( comment_params )
+    @comment = current_user.comments.build(comment_params)
     @comment.post = @post
     @new_comment = Comment.new
-
     authorize @comment
 
+    comment_create
+  end
+
+  def destroy
+    @post = Post.find(params[:post_id])
+    @comment = @post.comments.find(params[:id])
+    authorize @comment
+
+    comment_destroy
+  end
+
+  private
+
+  def comment_params
+    params.require(:comment).permit(:body)
+  end
+
+  # Moved .save and .destroy to reduce lines in controller actions
+  def comment_create
     if @comment.save
-      flash[:notice] = "Comment was created."
+      flash[:notice] = 'Comment was created.'
     else
-      flash[:error] = "There was an error saving the comment. Please try again."
+      flash[:error] = 'There was an error saving the comment. Please try again.'
     end
 
     respond_to do |format|
@@ -24,14 +39,9 @@ class CommentsController < ApplicationController
     end
   end
 
-  def destroy
-    @post = Post.find(params[:post_id])
-    @comment = @post.comments.find(params[:id])
-
-    authorize @comment
-    
+  def comment_destroy
     if @comment.destroy
-      flash[:notice] = "Comment was removed."
+      flash[:notice] = 'Comment was removed.'
     else
       flash[:error] = "Comment couldn't be deleted. Try again."
     end
@@ -41,11 +51,4 @@ class CommentsController < ApplicationController
       format.js
     end
   end
-
-  private
-
-  def comment_params
-    params.require(:comment).permit(:body)
-  end
-
 end

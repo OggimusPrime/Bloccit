@@ -5,12 +5,12 @@ class UsersController < ApplicationController
     @users = User.top_rated.paginate(page: params[:page], per_page: 10)
   end
 
-  def update 
+  def update
     if current_user.update_attributes(user_params)
-      flash[:notice] = "User information udpated"
+      flash[:notice] = 'User information updated'
       redirect_to edit_user_registration_path
     else
-      flash[:error] = "Invalid user information"
+      flash[:error] = 'Invalid user information'
       redirect_to edit_user_registration_path
     end
   end

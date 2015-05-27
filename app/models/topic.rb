@@ -7,5 +7,4 @@ class Topic < ActiveRecord::Base
   scope :privately_viewable, -> { where(public: false) }
 
   scope :visible_to, -> (user) { user ? all : publicly_viewable }
-
 end

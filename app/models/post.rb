@@ -6,7 +6,9 @@ class Post < ActiveRecord::Base
   belongs_to :topic
 
   default_scope { order('rank DESC') }
-  scope :visible_to, -> (user) { user ? all : joins(:topic).where('topics.public' => true) }
+  scope :visible_to, lambda { |user|
+    user ? all : joins(:topic).where('topics.public' => true)
+  }
 
   validates :title, length: { minimum: 5 }, presence: true
   validates :body, length: { minimum: 20 }, presence: true
@@ -26,19 +28,20 @@ class Post < ActiveRecord::Base
   end
 
   def update_rank
-    age_in_days = (created_at - Time.new(1970,1,1)) / (60 * 60 * 24) # 1 day in seconds
+    # (60 * 60 * 24) ~ 1 day in seconds
+    age_in_days = (created_at - Time.new(1970, 1, 1)) / (60 * 60 * 24)
     new_rank = points + age_in_days
-
+    # update rank with new_rank
     update_attribute(:rank, new_rank)
   end
 
-  def create_vote 
+  def create_vote
     user.votes.create(value: 1, post: self)
   end
 
-  def save_with_initial_vote
+  # called from Post#create to set initial up vote on own post
+  def initial_vote
     ActiveRecord::Base.transaction do
-      save
       create_vote
     end
   end

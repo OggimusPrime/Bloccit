@@ -1,7 +1,5 @@
 class Comment < ActiveRecord::Base
-
-  
-  belongs_to :post 
+  belongs_to :post
   belongs_to :user
 
   validates :body, length: { minimum: 5 }, presence: true
@@ -16,7 +14,7 @@ class Comment < ActiveRecord::Base
   def send_favorite_emails
     post.favorites.each do |favorite|
       if should_receive_update_for?(favorite)
-        FavoriteMailer.new_comment(favorite.user, self.post, self).deliver_now
+        FavoriteMailer.new_comment(favorite.user, post, self).deliver_now
       end
     end
   end

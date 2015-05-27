@@ -1,14 +1,13 @@
 require 'rails_helper'
 
-describe "Sign in flow" do
-
-  describe "successfully" do
-    it "redirects to the topics index" do
+describe 'Sign in flow' do
+  describe 'successfully' do
+    it 'redirects to the topics index' do
       @user = create(:user)
       visit root_path
 
       within '.user-info' do
-        click_link "Sign In"
+        click_link 'Sign In'
       end
       fill_in 'Email', with: @user.email
       fill_in 'Password', with: @user.password

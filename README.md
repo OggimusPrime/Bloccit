@@ -8,7 +8,7 @@ Made with my mentor at <a href='http://bloc.io'>Bloc.io</a>.
 
 ###Setup:
 
-1. This app uses < a href='https://github.com/laserlemon/figaro'>figaro</a> to manage environment variables which are store in application.yml
+1. This app uses <a href='https://github.com/laserlemon/figaro'>figaro</a> to manage environment variables which are store in application.yml
 
 2. Email notifications are handled through <a href='https://sendgrid.com/'>SendGrid</a> add on email service.
 

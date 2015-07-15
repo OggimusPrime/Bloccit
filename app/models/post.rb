@@ -10,6 +10,9 @@ class Post < ActiveRecord::Base
     user ? all : joins(:topic).where('topics.public' => true)
   }
 
+  # scope :order_by_title, -> { order('title') }
+  # scope :order_by_reverse_created, -> { order('created_at DESC') }
+
   validates :title, length: { minimum: 5 }, presence: true
   validates :body, length: { minimum: 20 }, presence: true
   validates :topic, presence: true

@@ -1,8 +1,8 @@
-##Bloccit:
+##Raddit:
 
 A Reddit replica to teach the fundamentals of web development and Rails.
 
-https://ryanhaase-bloccit.herokuapp.com/
+https://ryanhaase-raddit.herokuapp.com/
 
 Made with my mentor at <a href='http://bloc.io'>Bloc.io</a>.
 
